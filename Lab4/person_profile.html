@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Person Profile</title>
+
+<script>
+function validateForm(){
+
+    // Name Validation
+    var name = document.getElementById("name").value;
+    var nameRegex = /^[A-Za-z][A-Za-z.-]*\s+[A-Za-z.-]+$/;
+
+    if(name == ""){
+        alert("Name cannot be empty");
+        return false;
+    }
+    if(!nameRegex.test(name)){
+        alert("Name must contain at least two words and start with a letter");
+        return false;
+    }
+
+    // Email Validation
+    var email = document.getElementById("email").value;
+    var emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(email == ""){
+        alert("Email cannot be empty");
+        return false;
+    }
+    if(!emailRegex.test(email)){
+        alert("Invalid email format");
+        return false;
+    }
+
+    // Gender Validation
+    var male = document.getElementById("male").checked;
+    var female = document.getElementById("female").checked;
+
+    if(!male && !female){
+        alert("Please select gender");
+        return false;
+    }
+
+    // Date of Birth Validation
+    var dd = document.getElementById("dd").value;
+    var mm = document.getElementById("mm").value;
+    var yyyy = document.getElementById("yyyy").value;
+
+    if(dd=="" || mm=="" || yyyy==""){
+        alert("Date of Birth cannot be empty");
+        return false;
+    }
+    if(dd<0 || dd>31){
+        alert("Invalid Day");
+        return false;
+    }
+    if(mm<1 || mm>12){
+        alert("Invalid Month");
+        return false;
+    }
+    if(yyyy<1900 || yyyy>2016){
+        alert("Invalid Year");
+        return false;
+    }
+
+    // Skills Validation (Checkbox)
+    var html = document.getElementById("html").checked;
+    var css = document.getElementById("css").checked;
+    var js = document.getElementById("js").checked;
+
+    if(!html && !css && !js){
+        alert("Select at least one skill");
+        return false;
+    }
+
+    // Blood Group Validation
+    var blood = document.getElementById("blood").value;
+    if(blood == ""){
+        alert("Please select blood group");
+        return false;
+    }
+
+    // User ID Validation
+    var userid = document.getElementById("userid").value;
+    if(userid=="" || userid<=0){
+        alert("User ID must be a positive number");
+        return false;
+    }
+
+    // Picture Validation
+    var pic = document.getElementById("pic").value;
+    if(pic==""){
+        alert("Please upload a picture");
+        return false;
+    }
+
+    alert("Form Submitted Successfully!");
+    return true;
+}
+</script>
+
+</head>
+<body>
+
+<h2>Person Profile</h2>
+
+<form onsubmit="return validateForm()">
+
+Name: <input type="text" id="name"><br><br>
+
+Email: <input type="text" id="email"><br><br>
+
+Gender:
+<input type="radio" id="male" name="gender"> Male
+<input type="radio" id="female" name="gender"> Female
+<br><br>
+
+Date of Birth:
+<input type="text" id="dd" size="2" placeholder="DD"> /
+<input type="text" id="mm" size="2" placeholder="MM"> /
+<input type="text" id="yyyy" size="4" placeholder="YYYY">
+<br><br>
+
+Skills:
+<input type="checkbox" id="html"> HTML
+<input type="checkbox" id="css"> CSS
+<input type="checkbox" id="js"> JavaScript
+<br><br>
+
+Blood Group:
+<select id="blood">
+<option value="">Select</option>
+<option>A+</option>
+<option>B+</option>
+<option>O+</option>
+<option>AB+</option>
+</select>
+<br><br>
+
+User ID: <input type="text" id="userid"><br><br>
+
+Picture: <input type="file" id="pic"><br><br>
+
+<input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
