@@ -1,11 +1,13 @@
 <?php
-    if(isset($_REQUEST['submit'])){
-        $name = $_REQUEST['name'];
+    if(isset($_POST['submit'])){
+        $email = $_POST['email'];
 
-        if($name == ""){
-            echo "null username!";
+        if($email == ""){
+            echo "null email!";
         } else {
-            echo "Hello, " . $name . "!";
+            echo "Your email is: " . $email;
         }
+    } else {
+        echo "No email submitted!";
     }
-
+?>
